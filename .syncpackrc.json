@@ -1,0 +1,22 @@
+{
+  "dev": true,
+  "peer": true,
+  "prod": true,
+  "sortAz": ["scripts", "dependencies", "devDependencies", "peerDependencies", "author"],
+  "sortFirst": [
+    "name",
+    "version",
+    "author",
+    "description",
+    "main",
+    "typings",
+    "license",
+    "scripts",
+    "dependencies",
+    "devDependencies",
+    "peerDependencies",
+    "keywords",
+    "browserslist"
+  ],
+  "versionGroups": []
+}
