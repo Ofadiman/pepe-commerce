@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+
+# Dependencies
+node_modules
+
+# IDE
+.idea
+.vscode
+
+# Logs
+*.log
+lerna-debug.log*
+logs*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+build
+dist
+
+# Runtime data
+*.pid
+*.pid.lock
+*.seed
+pids
+
+# Environment
+!.env.example
+.env*
+
+# Yarn
+.pnp/
+.pnp.js
+.yarn-integrity
