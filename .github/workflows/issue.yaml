@@ -1,0 +1,36 @@
+name: Issue workflow
+
+on:
+  issues:
+    types: [opened, assigned, closed]
+
+jobs:
+  issue_opened:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: alex-page/github-project-automation-plus@v0.5.1
+        if: github.event.action == 'opened'
+        with:
+          project: pepe-commerce
+          column: Todo
+          repo-token: ${{ secrets.AUTOMATION }}
+
+  issue_assigned:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: alex-page/github-project-automation-plus@v0.5.1
+        if: github.event.action == 'assigned'
+        with:
+          project: pepe-commerce
+          column: In progress
+          repo-token: ${{ secrets.AUTOMATION }}
+
+  issue_closed:
+    runs-on: ubuntu-20.04
+    if: github.event.action == 'closed'
+    steps:
+      - uses: alex-page/github-project-automation-plus@v0.5.1
+        with:
+          project: pepe-commerce
+          column: Done
+          repo-token: ${{ secrets.AUTOMATION }}
