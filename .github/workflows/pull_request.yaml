@@ -1,0 +1,26 @@
+name: Pull request workflow
+
+on:
+  pull_request:
+    types: [closed, opened]
+
+jobs:
+  pull_request_opened:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: alex-page/github-project-automation-plus@v0.5.1
+        if: github.event.action == 'opened'
+        with:
+          project: pepe-commerce
+          column: Code review
+          repo-token: ${{ secrets.AUTOMATION }}
+
+  pull_request_closed:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: alex-page/github-project-automation-plus@v0.5.1
+        if: github.event.action == 'closed'
+        with:
+          project: pepe-commerce
+          column: Done
+          repo-token: ${{ secrets.AUTOMATION }}
