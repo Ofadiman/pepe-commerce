@@ -34,3 +34,8 @@ pids
 .pnp/
 .pnp.js
 .yarn-integrity
+
+# Next
+.vercel
+.next/
+out/
