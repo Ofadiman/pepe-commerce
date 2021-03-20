@@ -1,0 +1,11 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "[Command]: yarn syncpack-format"
+yarn syncpack-format
+
+echo "[Command]: npx --no-install lerna run lint-staged"
+npx --no-install lerna run lint-staged
+
+echo "[Command]: npx --no-install lerna run eslint-check"
+npx --no-install lerna run eslint-check
