@@ -1,0 +1,17 @@
+{
+  "extends": ["@ofadiman/eslint-config-react"],
+  "overrides": [
+    {
+      "files": ["type-definitions/**/*.d.ts"],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    },
+    {
+      "files": ["**/*.stories.{tsx,js}"],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    }
+  ]
+}
