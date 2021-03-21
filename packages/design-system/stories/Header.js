@@ -1,5 +1,6 @@
 import './header.css'
 
+import PropTypes from 'prop-types'
 import React from 'react'
 
 import { Button } from './Button'
@@ -33,3 +34,14 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
     </div>
   </header>
 )
+
+Header.propTypes = {
+  onCreateAccount: PropTypes.func.isRequired,
+  onLogin: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  user: PropTypes.shape({})
+}
+
+Header.defaultProps = {
+  user: null
+}
