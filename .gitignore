@@ -27,8 +27,8 @@ dist
 pids
 
 # Environment
-!.env.example
 .env*
+!.env.example
 
 # Yarn
 .pnp/
