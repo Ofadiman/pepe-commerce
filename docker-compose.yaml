@@ -1,0 +1,106 @@
+version: '3.7'
+
+services:
+  client:
+    container_name: client
+    image: pepe-commerce/client:1.0.0
+    build:
+      context: ./packages/client
+      dockerfile: dev.Dockerfile
+      args:
+        - uid=$UID
+        - gid=$GID
+        - user=$USER
+    volumes:
+      - .:/pepe-commerce
+    ports:
+      - 3000:3000
+    working_dir: /pepe-commerce/packages/client
+    command: yarn dev
+
+  admin:
+    container_name: admin
+    image: pepe-commerce/admin:1.0.0
+    build:
+      context: ./packages/admin
+      dockerfile: dev.Dockerfile
+      args:
+        - uid=$UID
+        - gid=$GID
+        - user=$USER
+    volumes:
+      - .:/pepe-commerce
+    ports:
+      - 3001:3000
+    working_dir: /pepe-commerce/packages/admin
+    command: yarn dev
+
+  server:
+    container_name: server
+    image: pepe-commerce/server:1.0.0
+    build:
+      context: ./packages/server
+      dockerfile: dev.Dockerfile
+      args:
+        - uid=$UID
+        - gid=$GID
+        - user=$USER
+    volumes:
+      - .:/pepe-commerce
+      # Mount AWS config file to the docker container.
+      - ~/.aws:/home/$USER/.aws
+    ports:
+      - 3002:3000
+    # Those services will start first.
+    depends_on:
+      - pg-dev
+      - pg-test
+    # `links` allows to reference services by their names (e.g. `postgres-dev`) instead of ip addresses.
+    links:
+      - pg-dev
+      - pg-test
+    working_dir: /pepe-commerce/packages/server
+    command: yarn dev
+    env_file:
+      - ./packages/server/.env.development
+    environment:
+      POSTGRES_DEV_DATABASE: postgres
+      POSTGRES_DEV_HOST: pg-dev
+      POSTGRES_DEV_PASSWORD: postgres
+      POSTGRES_DEV_PORT: 5432
+      POSTGRES_DEV_USER: postgres
+      POSTGRES_TEST_DATABASE: postgres
+      POSTGRES_TEST_HOST: pg-test
+      POSTGRES_TEST_PASSWORD: postgres
+      POSTGRES_TEST_PORT: 5432
+      POSTGRES_TEST_USER: postgres
+      PORT: 3000
+
+  pg-dev:
+    container_name: pg-dev
+    image: library/postgres:13.2-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+
+  pg-test:
+    container_name: pg-test
+    image: library/postgres:13.2-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+
+  pg-admin:
+    container_name: pg-admin
+    links:
+      - pg-dev
+      - pg-test
+    image: dpage/pgadmin4:4.29
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@pepe.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
+      PGADMIN_LISTEN_PORT: 8080
+    ports:
+      - 8080:8080

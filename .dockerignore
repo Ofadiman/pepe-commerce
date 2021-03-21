@@ -1,0 +1,16 @@
+# IDE
+.idea
+
+# Git
+.git
+.gitignore
+
+# Config files
+.commitlintrc.json
+.eslintrc.json
+.prettierrc.json
+.syncpackrc.json
+
+# Miscellaneous
+dev.Dockerfile
+docker-compose.yaml
