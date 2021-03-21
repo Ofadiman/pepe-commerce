@@ -1,15 +1,17 @@
 {
   "name": "design-system",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
+    "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "dev": "next dev"
   },
   "dependencies": {
     "next": "10.0.9",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "spacing-helper": "^4.1.2",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -17,6 +19,11 @@
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
     "@storybook/react": "^6.1.21",
-    "babel-loader": "^8.2.2"
-  }
+    "@types/node": "^14.14.35",
+    "@types/react": "^17.0.3",
+    "@types/styled-components": "^5.1.9",
+    "babel-loader": "^8.2.2",
+    "typescript": "^4.2.3"
+  },
+  "private": true
 }
