@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && nest build",
-    "start-dev": "nest start --watch",
-    "start-prod": "node dist/main",
+    "dev": "nest start --watch",
+    "prod": "node dist/main",
     "test": "jest --watch --config jest.config.js",
     "test-ci": "jest --config jest.config.js",
     "test-collect-coverage": "jest --config jest.config.js --collect-coverage"

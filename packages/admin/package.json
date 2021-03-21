@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "react-scripts build",
-    "start-dev": "react-scripts start",
+    "dev": "react-scripts start",
     "test": "react-scripts test"
   },
   "dependencies": {

@@ -16,7 +16,7 @@ services:
     ports:
       - 3000:3000
     working_dir: /pepe-commerce/packages/client
-    command: yarn start-dev
+    command: yarn dev
 
   admin:
     container_name: admin
@@ -33,7 +33,7 @@ services:
     ports:
       - 3001:3000
     working_dir: /pepe-commerce/packages/admin
-    command: yarn start-dev
+    command: yarn dev
 
   server:
     container_name: server
@@ -60,7 +60,7 @@ services:
       - pg-dev
       - pg-test
     working_dir: /pepe-commerce/packages/server
-    command: yarn start-dev
+    command: yarn dev
     env_file:
       - ./packages/server/.env.development
     environment:
