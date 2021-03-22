@@ -5,7 +5,7 @@ import { typography } from './typography'
 
 const bodyStyles = css`
   font-family: ${typography.font.primary};
-  font-size: ${typography.size.s3}
+  font-size: ${typography.size.s3};
   color: ${palette.black.dark};
   margin: 0;
   overflow-y: auto;

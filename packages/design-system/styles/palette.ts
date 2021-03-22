@@ -1,5 +1,4 @@
 export const palette = {
-  // Palette
   primary: 'var(--colors-primary)',
   secondary: 'var(--colors-primary)',
   tertiary: 'var(--colors-primary)',
