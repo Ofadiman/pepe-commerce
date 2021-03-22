@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "build-storybook": "build-storybook",
-    "storybook": "start-storybook -p 6006",
-    "dev": "next dev"
+    "dev": "next dev",
+    "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
     "next": "10.0.9",

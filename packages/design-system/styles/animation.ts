@@ -1,6 +1,4 @@
-import { css, keyframes } from 'styled-components'
-
-import { palette } from './palette'
+import { keyframes } from 'styled-components'
 
 export const easing = {
   rubber: 'cubic-bezier(0.175, 0.885, 0.335, 1.05)'
@@ -50,28 +48,4 @@ export const shake = keyframes`
   14.31579% { transform:rotate(6deg) }
   15.78947% { transform:rotate(0deg) }
   100% { transform:rotate(0deg) }
-`
-
-export const inlineGlow = css`
-  animation: ${glow} 1.5s ease-in-out infinite;
-  background: ${palette.gray.light};
-  color: transparent;
-  cursor: progress;
-`
-
-export const hoverEffect = css`
-  border: 1px solid ${palette.border};
-  border-radius: 5px;
-  transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
-  &:hover,
-  &.__hover {
-    border-color: rgba(30, 167, 253, 0.5);
-    transform: translate3d(0, -3px, 0);
-    box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
-  }
-  &:active,
-  &.__active {
-    border-color: rgba(30, 167, 253, 1);
-    transform: translate3d(0, 0, 0);
-  }
 `

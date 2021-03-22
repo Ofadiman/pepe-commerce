@@ -12,7 +12,6 @@ const bodyStyles = css`
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   -webkit-overflow-scrolling: touch;
   * {
@@ -77,6 +76,7 @@ const bodyStyles = css`
     border-radius: 3px;
     margin: 1rem 0;
   }
+  // Overriding react-modal component
   &.ReactModal__Body--open {
     overflow: hidden;
     &.hide-intercom #intercom-container {
@@ -106,7 +106,7 @@ export const GlobalStyle = createGlobalStyle`
     ${bodyStyles}
   }
 
-  
+  // Easily maintainable through DevTools
   :root {
       // Palette
       --colors-primary: #FF4785;
@@ -147,7 +147,6 @@ export const GlobalStyle = createGlobalStyle`
       --breakpoints-md: '1280px';
       --breakpoints-lg: '1440px';
       --breakpoints-xl: '1600px';
-
   }
   
   // leaving it for further dark mode implementation
