@@ -1,12 +1,11 @@
 {
-  "name": "design-system",
+  "name": "@pepe-commerce/design-system",
   "version": "0.1.0",
   "scripts": {
     "build-storybook": "build-storybook",
-    "dev": "next dev",
     "storybook": "start-storybook -p 6006"
   },
-  "dependencies": {
+  "peerDependencies": {
     "next": "10.0.9",
     "react": "17.0.1",
     "react-dom": "17.0.1",

@@ -5,7 +5,7 @@ import { typography } from './typography'
 
 const bodyStyles = css`
   font-family: ${typography.font.primary};
-  font-size: ${typography.size.s3};
+  font-size: ${typography.size.s3}
   color: ${palette.black.dark};
   margin: 0;
   overflow-y: auto;
@@ -99,7 +99,8 @@ const bodyStyles = css`
 
 // Allow design system consumers to access font settings but control how and
 // where they load the font.
-export const fontUrl = 'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900&display=swap'
+export const fontUrl =
+  'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900&display=swap'
 
 export const GlobalStyle = createGlobalStyle`
   body {
