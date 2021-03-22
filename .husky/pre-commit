@@ -2,7 +2,7 @@
 . "$(dirname "$0")/_/husky.sh"
 
 echo "[Command]: yarn syncpack-format"
-yarn syncpack-format
+yarn syncpack-format && git add package.json && git add packages/**/package.json
 
 echo "[Command]: npx --no-install lerna run lint-staged"
 npx --no-install lerna run lint-staged
