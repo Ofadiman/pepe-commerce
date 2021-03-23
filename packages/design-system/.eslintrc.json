@@ -13,5 +13,10 @@
         "import/no-default-export": "off"
       }
     }
-  ]
+  ],
+  "rules": {
+    "sort-keys": "off",
+    "sort-keys-fix/sort-keys-fix": "off",
+    "linebreak-style": "off"
+  }
 }
