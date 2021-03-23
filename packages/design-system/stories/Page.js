@@ -1,5 +1,6 @@
 import './page.css'
 
+import PropTypes from 'prop-types'
 import React from 'react'
 
 import { Header } from './Header'
@@ -62,3 +63,13 @@ export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
     </section>
   </article>
 )
+Page.propTypes = {
+  onCreateAccount: PropTypes.func.isRequired,
+  onLogin: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  user: PropTypes.shape({})
+}
+
+Page.defaultProps = {
+  user: null
+}
