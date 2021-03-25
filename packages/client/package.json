@@ -11,8 +11,6 @@
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
-  "devDependencies": {
-    "@storybook/theming": "^6.1.21"
-  },
+  "devDependencies": {},
   "private": true
 }
