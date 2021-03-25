@@ -1,4 +1,5 @@
 import { GlobalStyle } from '../styles'
+import theme from "./theme";
 
 export const parameters = {
   actions: {
@@ -7,6 +8,9 @@ export const parameters = {
   a11y: {
     element: '#root',
     manual: false,
+  },
+  docs: {
+    theme,
   },
 }
 
