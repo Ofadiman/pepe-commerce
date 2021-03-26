@@ -16,6 +16,7 @@
   ],
   "rules": {
     "sort-keys": "off",
-    "sort-keys-fix/sort-keys-fix": "off"
+    "sort-keys-fix/sort-keys-fix": "off",
+    "linebreak-style": "off"
   }
 }

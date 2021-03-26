@@ -3,7 +3,23 @@
   "version": "0.1.0",
   "scripts": {
     "build-storybook": "build-storybook",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006 --no-manager-cache"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@storybook/addon-a11y": "^6.1.21",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/react": "^6.1.21",
+    "@storybook/theming": "^6.1.21",
+    "@types/node": "^14.14.35",
+    "@types/react": "^17.0.3",
+    "@types/styled-components": "^5.1.9",
+    "babel-loader": "^8.2.2",
+    "spacing-helper": "^4.1.2",
+    "styled-components": "^5.2.1",
+    "typescript": "^4.2.3"
   },
   "peerDependencies": {
     "next": "10.0.9",
@@ -11,18 +27,6 @@
     "react-dom": "17.0.1",
     "spacing-helper": "^4.1.2",
     "styled-components": "^5.2.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@storybook/addon-actions": "^6.1.21",
-    "@storybook/addon-essentials": "^6.1.21",
-    "@storybook/addon-links": "^6.1.21",
-    "@storybook/react": "^6.1.21",
-    "@types/node": "^14.14.35",
-    "@types/react": "^17.0.3",
-    "@types/styled-components": "^5.1.9",
-    "babel-loader": "^8.2.2",
-    "typescript": "^4.2.3"
   },
   "private": true
 }
