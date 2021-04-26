@@ -6,7 +6,7 @@ import { typography } from './typography'
 const bodyStyles = css`
   font-family: ${typography.font.primary};
   font-size: ${typography.size.s3};
-  color: ${palette.black.dark};
+  color: ${palette.mono900};
   margin: 0;
   overflow-y: auto;
   overflow-x: hidden;
@@ -49,7 +49,7 @@ const bodyStyles = css`
   }
   hr {
     border: none;
-    border-top: 1px solid ${palette.border};
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     clear: both;
     margin-bottom: 1.25rem;
   }
@@ -72,7 +72,7 @@ const bodyStyles = css`
     padding: 11px 1rem;
     white-space: pre-wrap;
     background: rgba(0, 0, 0, 0.05);
-    color: ${palette.black.dark};
+    color: ${palette.mono100};
     border-radius: 3px;
     margin: 1rem 0;
   }
@@ -99,7 +99,7 @@ const bodyStyles = css`
 
 // Allow design system consumers to access font settings but control how and
 // where they load the font.
-export const fontUrl = 'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900&display=swap'
+export const fontUrl = 'https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800,900&display=swap'
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -122,20 +122,18 @@ export const GlobalStyle = createGlobalStyle`
       
       
       // Monochrome
-      --colors-white-light: #FFFFFF;
-      --colors-white-medium: #F8F8F8;
-      --colors-white-dark: #F3F3F3;
-      
-      --colors-gray-light: #EEEEEE;
-      --colors-gray-medium: #DDDDDD;
-      --colors-gray-dark: #999999;
-      
-      --colors-black-light: #444444;
-      --colors-black-medium: #222222;
-      --colors-black-dark: #000000;
-      
-      --colors-border: 'rgba(0,0,0,.1)';
+      --colors-monochrome-100: #FFFFFF;
+      --colors-monochrome-200: #F8F8F8;
+      --colors-monochrome-300: #F3F3F3;
 
+      --colors-monochrome-400: #EEEEEE;
+      --colors-monochrome-500: #DDDDDD;
+      --colors-monochrome-600: #999999;
+
+      --colors-monochrome-700: #444444;
+      --colors-monochrome-800: #222222;
+      --colors-monochrome-900: #000000;
+      
       // Status
       --colors-status-positive: #66BF3C;
       --colors-status-negative: #FF4400;
