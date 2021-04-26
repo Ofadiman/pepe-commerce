@@ -1,4 +1,5 @@
-import { FC, forwardRef, MutableRefObject, useRef } from 'react'
+import Link from 'next/link'
+import { FC, forwardRef, useRef } from 'react'
 // according to https://reakit.io/docs/get-started/#server-side-rendering
 import { Provider } from 'reakit'
 
@@ -17,8 +18,8 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
 
   return (
     <Provider>
-      <StyledButton as={href ? 'a' : 'button'} ref={mergeRefs([buttonRef, ref])} {...args}>
-        {children}
+      <StyledButton as={href ? Link : 'button'} ref={mergeRefs([buttonRef, ref])} {...args}>
+        {href ? <a href={href}>{children}</a> : children}
       </StyledButton>
     </Provider>
   )
