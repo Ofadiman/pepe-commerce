@@ -3,12 +3,11 @@ import styled, { css } from 'styled-components'
 
 import { palette } from '../../styles/palette'
 import { spacing } from '../../styles/spacing'
-import { Props } from './Button.types'
+import { ButtonProps } from './Button.types'
 
-// background: ${({ color, variant }) => getBackground(color, variant)};
 type Styles = ReturnType<typeof css>
 
-export const StyledButton = styled(Button)<Props>`
+const buttonStyles = (props: ButtonProps): Styles => css`
   outline: 0;
   line-height: 1.75;
   font-weight: 700;
@@ -32,31 +31,37 @@ export const StyledButton = styled(Button)<Props>`
     border-radius: 0.25rem;
   }
 
-  &:before {
-  }
-
   &:not([disabled]),
   &:not([aria-disabled='true']) {
     &:hover:before {
       opacity: 0.8;
     }
 
+    // any idea how to indicate active state?
     &:active,
     &[data-active='true'] {
     }
   }
 
-  ${(props) => props.color === 'default' && defaultStyles(props)}
-  ${(props) => props.color === 'primary' && primaryStyles(props)}
-  ${(props) => props.color === 'secondary' && secondaryStyles(props)}
-  ${(props) => props.disabled && disabledStyles(props)}
+  ${props.color === 'default' && defaultStyles(props)}
+  ${props.color === 'primary' && primaryStyles(props)}
+  ${props.color === 'secondary' && secondaryStyles(props)}
+  ${props.disabled && disabledStyles(props)}
   
-  ${(props) => props.size === 's' && smallSize()}
-  ${(props) => props.size === 'm' && mediumSize()}
-  ${(props) => props.size === 'l' && largeSize()}
+  ${props.size === 's' && smallSize()}
+  ${props.size === 'm' && mediumSize()}
+  ${props.size === 'l' && largeSize()}
 `
 
-const defaultStyles = (props: Props): Styles => css`
+export const StyledButton = styled(Button)<ButtonProps>`
+  ${buttonStyles}
+`
+
+export const StyledButtonLink = styled.a<ButtonProps>`
+  ${buttonStyles}
+`
+
+const defaultStyles = (props: ButtonProps): Styles => css`
   color: ${palette.mono900};
 
   .ripple {
@@ -111,7 +116,7 @@ const defaultStyles = (props: Props): Styles => css`
   `}
 `
 
-const primaryStyles = (props: Props): Styles => css`
+const primaryStyles = (props: ButtonProps): Styles => css`
   color: ${palette.primary};
 
   &:before {
@@ -155,7 +160,7 @@ const primaryStyles = (props: Props): Styles => css`
     }
   `}
 `
-const secondaryStyles = (props: Props): Styles => css`
+const secondaryStyles = (props: ButtonProps): Styles => css`
   color: ${palette.secondary};
 
   &:before {
@@ -208,7 +213,7 @@ const secondaryStyles = (props: Props): Styles => css`
   `}
 `
 
-const disabledStyles = (props: Props): Styles => css`
+const disabledStyles = (props: ButtonProps): Styles => css`
   &[disabled],
   &[aria-disabled='true'] {
     opacity: 0.5;

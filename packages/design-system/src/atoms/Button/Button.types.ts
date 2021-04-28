@@ -1,33 +1,27 @@
-import { ButtonHTMLAttributes, MouseEvent } from 'react'
-import { ButtonProps } from 'reakit'
+import { LinkProps } from 'next/link'
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, MouseEvent } from 'react'
+import { ButtonProps as ReakitButtonProps } from 'reakit'
 
 import { Color } from '../../types/Color'
 import { Sizes } from '../../types/Size'
 
-type LinkButtonProps = {
-  href?: string
-  onClick?: never
-}
-
 type SubmitButtonProps = {
-  href?: never
   onClick?: never
   type?: 'submit'
 }
 
 type BasicButtonProps = {
-  href?: never
   onClick?: (event?: MouseEvent<HTMLButtonElement>) => void
-  type?: 'button'
+  type?: 'button' | undefined
 }
 
-type BasicProps = LinkButtonProps | SubmitButtonProps | BasicButtonProps
+type BaseButtonProps = SubmitButtonProps | BasicButtonProps
 
 type Variant = 'contained' | 'ghost' | 'outlined'
 
 // Props connected with UI approach are in separate
 // type for Storybook controls
-export type StorybookProps = BasicProps & {
+export type BaseProps = {
   /**
    * Color from palette default | primary | secondary
    */
@@ -46,6 +40,6 @@ export type StorybookProps = BasicProps & {
   variant?: Variant
 }
 
-type BaseProps = StorybookProps & ButtonHTMLAttributes<HTMLButtonElement>
+export type ButtonProps = ReakitButtonProps & BaseProps & BaseButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
 
-export type Props = ButtonProps & BaseProps
+export type LinkButtonProps = BaseProps & AnchorHTMLAttributes<HTMLAnchorElement> & LinkProps

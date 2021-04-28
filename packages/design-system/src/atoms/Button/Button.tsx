@@ -1,27 +1,22 @@
-import Link from 'next/link'
 import { FC, forwardRef, useRef } from 'react'
-// according to https://reakit.io/docs/get-started/#server-side-rendering
-import { Provider } from 'reakit'
 
 import { mergeRefs } from '../../utils/helpers/mergeRefs'
 import { useRipple } from '../../utils/hooks/useRipple'
 import { StyledButton } from './Button.styles'
-import { Props, StorybookProps } from './Button.types'
+import { BaseProps, ButtonProps } from './Button.types'
 
-export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
-  const { children, type, href, isRippleDisabled, ...args } = props
-  const buttonRef = useRef<HTMLButtonElement>(null)
+export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
+  const { children, isRippleDisabled, ...args } = props
+  const buttonRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null)
 
   useRipple(buttonRef, {
     disabled: isRippleDisabled
   })
 
   return (
-    <Provider>
-      <StyledButton as={href ? Link : 'button'} ref={mergeRefs([buttonRef, ref])} {...args}>
-        {href ? <a href={href}>{children}</a> : children}
-      </StyledButton>
-    </Provider>
+    <StyledButton ref={mergeRefs([buttonRef, ref])} {...args}>
+      {children}
+    </StyledButton>
   )
 })
 
@@ -35,4 +30,4 @@ Button.defaultProps = {
 }
 
 // TODO typescript doc-gen issue
-export const DocumentationButton: FC<StorybookProps> = (props) => <Button {...props} />
+export const DocumentationButton: FC<BaseProps> = (props) => <Button {...props} />

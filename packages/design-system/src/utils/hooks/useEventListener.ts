@@ -26,24 +26,11 @@ export const useEventListener = <T extends HTMLElement = HTMLDivElement>(
       savedHandlerRef.current(event)
     }
 
-    if (!Array.isArray(event)) {
-      targetElement.addEventListener(
-        event,
-        eventListener,
-        options ?? {
-          capture: false,
-          passive: true
-        }
-      )
+    const events = Array.isArray(event) ? event : [event]
 
-      return (): void => {
-        targetElement.removeEventListener(event, eventListener)
-      }
-    }
-
-    event.forEach((evt) => {
+    events.forEach((eventName) => {
       targetElement.addEventListener(
-        evt,
+        eventName,
         eventListener,
         options ?? {
           capture: false,
@@ -53,9 +40,9 @@ export const useEventListener = <T extends HTMLElement = HTMLDivElement>(
     })
 
     return (): void => {
-      event.forEach((evt) => {
+      events.forEach((eventName) => {
         targetElement.removeEventListener(
-          evt,
+          eventName,
           eventListener,
           options ?? {
             capture: false,
