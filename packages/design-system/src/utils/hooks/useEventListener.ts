@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useRef } from 'react'
 
-type EventName = keyof HTMLElementEventMap
+type EventName = keyof WindowEventMap
 
 export const useEventListener = <T extends HTMLElement = HTMLDivElement>(
   event: EventName | EventName[],
