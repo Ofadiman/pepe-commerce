@@ -1,0 +1,126 @@
+import { Meta, Canvas, Story, Props } from "@storybook/addon-docs/blocks";
+import { DocumentationIconButton as IconButton, IconButton as IconButtonMain } from "./IconButton";
+import { Icon } from '../Icon'
+import { StoryList } from "../../utils/storybook/StoryList";
+
+<Meta
+  title="Atoms/IconButton"
+  component={IconButton}
+  parameters={{
+    controls: {
+      sort: 'requiredFirst'
+    }
+  }}
+/>
+
+## Default
+<Story name="Default">
+  <StoryList >
+    <IconButton size="s"><Icon name="basket" size={16} /></IconButton>
+    <IconButton><Icon name="basket" size={20} /></IconButton>
+    <IconButton size="l"><Icon name="basket" size={24} /></IconButton>
+  </StoryList>
+  <StoryList >
+    <IconButton size="s" variant="outlined"><Icon name="basket" size={16} /></IconButton>
+    <IconButton variant="outlined"><Icon name="basket" size={20} /></IconButton>
+    <IconButton size="l" variant="outlined"><Icon name="basket" size={24} /></IconButton>
+  </StoryList>
+  <StoryList >
+    <IconButton size="s" variant="ghost"><Icon name="basket" size={16} /></IconButton>
+    <IconButton variant="ghost"><Icon name="basket" size={20} /></IconButton>
+    <IconButton size="l" variant="ghost"><Icon name="basket" size={24} /></IconButton>
+  </StoryList>
+</Story>
+
+
+## Primary
+<Story name="Primary">
+  <StoryList>
+    <IconButton size="s" variant="contained" color="primary"><Icon name="basket" size={16} /></IconButton>
+    <IconButton color="primary"  variant="contained"><Icon name="basket" size={20} /></IconButton>
+    <IconButton size="l"  variant="contained" color="primary"><Icon name="basket" size={24} /></IconButton>
+  </StoryList>
+  <StoryList>
+    <IconButton size="s" variant="outlined" color="primary"><Icon name="basket" size={16} /></IconButton>
+    <IconButton variant="outlined" color="primary"><Icon name="basket" size={20} /></IconButton>
+    <IconButton size="l" variant="outlined" color="primary"><Icon name="basket" size={24} /></IconButton>
+  </StoryList>
+  <StoryList>
+    <IconButton size="s" variant="ghost" color="primary"><Icon name="basket" size={16} /></IconButton>
+    <IconButton variant="ghost" color="primary"><Icon name="basket" size={20} /></IconButton>
+    <IconButton size="l" variant="ghost" color="primary"><Icon name="basket" size={24} /></IconButton>
+  </StoryList>
+</Story>
+
+## Secondary
+<Story name="Secondary">
+  <StoryList>
+    <IconButton size="s" color="secondary"><Icon name="basket" size={16}/></IconButton>
+    <IconButton color="secondary"><Icon name="basket" size={20} /></IconButton>
+    <IconButton size="l" color="secondary"><Icon name="basket" size={24} /></IconButton>
+  </StoryList>
+  <StoryList>
+    <IconButton size="s" variant="outlined" color="secondary"><Icon name="basket" size={16} /></IconButton>
+    <IconButton variant="outlined" color="secondary"><Icon name="basket" size={20} /></IconButton>
+    <IconButton size="l" variant="outlined" color="secondary"><Icon name="basket" size={24} /></IconButton>
+  </StoryList>
+  <StoryList>
+    <IconButton size="s" variant="ghost" color="secondary"><Icon name="basket" size={16} /></IconButton>
+    <IconButton variant="ghost" color="secondary"><Icon name="basket" size={20} /></IconButton>
+    <IconButton size="l" variant="ghost" color="secondary"><Icon name="basket" size={24} /></IconButton>
+  </StoryList>
+</Story>
+
+## Disabled
+<Story name="Disabled">
+  <StoryList >
+    <IconButton disabled variant="ghost"><Icon name="basket" /></IconButton>
+    <IconButton size="s" disabled><Icon name="basket" /></IconButton>
+    <IconButton disabled><Icon name="basket" /></IconButton>
+    <IconButton size="l" disabled><Icon name="basket" /></IconButton>
+  </StoryList>
+</Story>
+
+
+
+Experiment with this story with the Controls addon in the Canvas tab.
+
+export const Template = (args) => <IconButton {...args} />
+
+<Props of={IconButtonMain} />
+
+## Playground
+
+<Canvas>
+  <Story
+    name="Playground"
+    args={{
+      children: 'Button'
+    }}
+    argTypes={{
+      variant: {
+        control: {
+          type: 'inline-radio',
+          options: ['contained', 'outlined', 'ghost']
+        }
+      },
+      color: {
+        control: {
+          type: 'inline-radio',
+          options: ['primary', 'secondary', 'default']
+        }
+      },
+      size: {
+        control: {
+          type: 'inline-radio',
+          options: ['s', 'm', 'l']
+        }
+      },
+      isRippleDisabled: {
+        control: 'boolean'
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
