@@ -1,10 +1,10 @@
-import { FC } from 'react'
+import { VFC } from 'react'
 
 import { StyledIcon } from './Icon.styles'
 import { Props } from './Icon.types'
 import { icons } from './icons'
 
-export const Icon: FC<Props> = ({ name, size, color, iconId = '', ...args }) => {
+export const Icon: VFC<Props> = ({ name, size, color, iconId = '', ...args }) => {
   const { title, paths: IconPaths, viewBox } = icons[name]
 
   return (
