@@ -1,4 +1,4 @@
-import { GlobalStyle } from '../styles'
+import { GlobalStyle } from '../src/styles'
 import theme from "./theme";
 
 export const parameters = {

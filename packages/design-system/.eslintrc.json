@@ -17,6 +17,10 @@
   "rules": {
     "sort-keys": "off",
     "sort-keys-fix/sort-keys-fix": "off",
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/sort-type-union-intersection-members": "off",
+    "react/display-name": "off",
+    "no-warning-comments": "off"
   }
 }
