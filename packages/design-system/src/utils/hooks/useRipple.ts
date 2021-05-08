@@ -2,7 +2,7 @@ import { MutableRefObject, RefObject, useEffect } from 'react'
 
 import { palette } from '../../styles/palette'
 
-const ANIMATION_LENGTH = 700
+const ANIMATION_LENGTH = 800
 const RIPPLE_SIZE = 300
 const RIPPLE_COLOR = palette.primary
 
@@ -12,7 +12,7 @@ if (typeof document !== 'undefined') {
   rippleAnimation.innerHTML = `
     @keyframes use-ripple-animation {
       from {
-        opacity: 0.35;
+        opacity: 0.15;
         transform: scale(0);
       }
       to {
@@ -80,6 +80,7 @@ const createRipple = (element: HTMLElement, options?: RippleOptions) => (event?:
     position: absolute;
     border-radius: 50%;
     background-color: ${options?.rippleColor ?? RIPPLE_COLOR};
+    opacity: 1;
     pointer-events: none;
     width: ${rippleSize}px;
     height: ${rippleSize}px;

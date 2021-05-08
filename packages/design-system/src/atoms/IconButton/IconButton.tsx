@@ -2,26 +2,26 @@ import { FC, forwardRef, useRef } from 'react'
 
 import { mergeRefs } from '../../utils/helpers/mergeRefs'
 import { useRipple } from '../../utils/hooks/useRipple'
-import { StyledButton } from './Button.styles'
-import { BaseProps, ButtonProps } from './Button.types'
+import { StyledIconButton } from './IconButton.styles'
+import { BaseProps, IconButtonProps } from './IconButton.types'
 
-export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>((props, ref) => {
   const { children, isRippleDisabled, ...args } = props
-  const buttonRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   useRipple(buttonRef, {
     disabled: isRippleDisabled
   })
 
   return (
-    <StyledButton ref={mergeRefs([buttonRef, ref])} {...args}>
+    <StyledIconButton ref={mergeRefs([buttonRef, ref])} {...args}>
       {children}
-    </StyledButton>
+    </StyledIconButton>
   )
 })
 
 // doc-gen require to set default props like this
-Button.defaultProps = {
+IconButton.defaultProps = {
   size: 'm',
   type: 'button',
   variant: 'contained',
@@ -30,4 +30,4 @@ Button.defaultProps = {
 }
 
 // TODO issue #43
-export const DocumentationButton: FC<BaseProps> = (props) => <Button {...props} />
+export const DocumentationIconButton: FC<BaseProps> = (props) => <IconButton {...props} />
