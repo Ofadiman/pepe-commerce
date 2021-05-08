@@ -3,7 +3,7 @@ import { forwardRef, useRef } from 'react'
 
 import { mergeRefs } from '../../utils/helpers/mergeRefs'
 import { useRipple } from '../../utils/hooks/useRipple'
-import { StyledButtonLink } from './Button.styles'
+import * as Styled from './Button.styles'
 import { LinkButtonProps } from './Button.types'
 
 export const ButtonLink = forwardRef<HTMLAnchorElement, LinkButtonProps>((props, ref) => {
@@ -16,9 +16,9 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, LinkButtonProps>((props,
 
   return (
     <Link {...args}>
-      <StyledButtonLink color={color} ref={mergeRefs([buttonRef, ref])} size={size} variant={variant}>
+      <Styled.ButtonLink color={color} ref={mergeRefs([buttonRef, ref])} size={size} variant={variant}>
         {children}
-      </StyledButtonLink>
+      </Styled.ButtonLink>
     </Link>
   )
 })

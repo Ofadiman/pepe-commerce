@@ -15,6 +15,14 @@ const getPaths: GetPaths = (name) =>
 export const icons: Icons = {
   basket: {
     paths: getPaths('Basket'),
-    title: 'client basket icon'
+    title: 'Client basket icon'
+  },
+  eye: {
+    paths: getPaths('Eye'),
+    title: 'Eye icon'
+  },
+  'eye-crossed': {
+    paths: getPaths('EyeCrossed'),
+    title: 'Crossed eye icon'
   }
 }

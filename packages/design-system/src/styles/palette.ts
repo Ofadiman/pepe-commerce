@@ -1,4 +1,4 @@
-export const palette = {
+const palette = {
   primary: 'var(--colors-primary)',
   secondary: 'var(--colors-secondary)',
   tertiary: 'var(--colors-tertiary)',
@@ -20,7 +20,13 @@ export const palette = {
   mono800: 'var(--colors-monochrome-800)',
   mono900: 'var(--colors-monochrome-900)',
 
-  positive: 'var(--colors-status-positive)',
-  negative: 'var(--colors-status-negative)',
-  warning: 'var(--colors-status-warning)'
+  success: 'var(--colors-status-positive)',
+  error: 'var(--colors-status-negative)',
+  warning: 'var(--colors-status-warning)',
+  info: 'var(--colors-primary)'
 } as const
+
+export type PaletteColor = keyof typeof palette
+export type Palette = typeof palette
+
+export const color = (color: PaletteColor, opacity = 1): string => `rgba(${palette[color]}, ${opacity})`

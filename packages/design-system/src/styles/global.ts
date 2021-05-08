@@ -1,12 +1,12 @@
 import { createGlobalStyle, css } from 'styled-components'
 
-import { palette } from './palette'
+import { color } from './palette'
 import { typography } from './typography'
 
 const bodyStyles = css`
   font-family: ${typography.font.primary};
   font-size: ${typography.size.s3};
-  color: ${palette.mono900};
+  color: ${color('mono900')};
   margin: 0;
   overflow-y: auto;
   overflow-x: hidden;
@@ -65,14 +65,14 @@ const bodyStyles = css`
     padding-left: 2px;
     padding-right: 2px;
     vertical-align: baseline;
-    color: ${palette.secondary};
+    color: ${color('secondary')};
   }
   pre {
     line-height: 18px;
     padding: 11px 1rem;
     white-space: pre-wrap;
     background: rgba(0, 0, 0, 0.05);
-    color: ${palette.mono100};
+    color: ${color('mono100')};
     border-radius: 3px;
     margin: 1rem 0;
   }
@@ -109,35 +109,34 @@ export const GlobalStyle = createGlobalStyle`
   // Easily maintainable through DevTools
   :root {
       // Palette
-      --colors-primary: #FF4785;
-      --colors-secondary: #1EA7FD;
-      --colors-tertiary: #DDDDDD;
+      --colors-primary: 255, 71, 133;
+      --colors-secondary: 30, 167, 253;
+      --colors-tertiary: 221, 221, 221;
       
-      --colors-orange: #FC521F;
-      --colors-gold: #FFAE00;
-      --colors-green: #66BF3C;
-      --colors-seafoam: #37D5D3;
-      --colors-purple: #6F2CAC;
-      --colors-ultraviolet: #2A0481;
-      
+      --colors-orange: 252, 82, 31;
+      --colors-gold: 255, 174, 0;
+      --colors-green: 102, 191, 60;
+      --colors-seafoam: 55, 213, 211;
+      --colors-purple: 111, 44, 172;
+      --colors-ultraviolet: 42, 4, 129;
       
       // Monochrome
-      --colors-monochrome-100: #FFFFFF;
-      --colors-monochrome-200: #F8F8F8;
-      --colors-monochrome-300: #F3F3F3;
+      --colors-monochrome-100: 255, 255, 255;
+      --colors-monochrome-200: 248, 248, 248;
+      --colors-monochrome-300: 243, 243, 243;
 
-      --colors-monochrome-400: #EEEEEE;
-      --colors-monochrome-500: #DDDDDD;
-      --colors-monochrome-600: #999999;
+      --colors-monochrome-400: 238, 238, 238;
+      --colors-monochrome-500: 221, 221, 221;
+      --colors-monochrome-600: 153, 153, 153;
 
-      --colors-monochrome-700: #444444;
-      --colors-monochrome-800: #222222;
-      --colors-monochrome-900: #000000;
+      --colors-monochrome-700: 68, 68, 68;
+      --colors-monochrome-800: 34, 34, 34;
+      --colors-monochrome-900: 0, 0, 0;
       
       // Status
-      --colors-status-positive: #66BF3C;
-      --colors-status-negative: #FF4400;
-      --colors-status-warning: #E69D00;
+      --colors-status-positive: 102, 191, 60;
+      --colors-status-negative: 255, 68, 0;
+      --colors-status-warning: 230, 157, 0;
       
       // Breakpoints
       --breakpoints-xs: '600px';

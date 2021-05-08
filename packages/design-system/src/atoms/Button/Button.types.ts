@@ -4,6 +4,7 @@ import { ButtonProps as ReakitButtonProps } from 'reakit'
 
 import { Color } from '../../types/Color'
 import { Sizes } from '../../types/Size'
+import { Variant } from '../../types/Variant'
 
 type SubmitButtonProps = {
   onClick?: never
@@ -16,8 +17,6 @@ type BasicButtonProps = {
 }
 
 type BaseButtonProps = SubmitButtonProps | BasicButtonProps
-
-type Variant = 'contained' | 'ghost' | 'outlined'
 
 // Props connected with UI approach are in separate
 // type for Storybook controls

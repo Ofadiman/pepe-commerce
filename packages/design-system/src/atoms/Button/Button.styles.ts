@@ -1,47 +1,21 @@
-import { Button } from 'reakit/Button'
+import { Button as ReakitButton } from 'reakit/Button'
 import styled, { css } from 'styled-components'
 
-import { palette } from '../../styles/palette'
+import { color, PaletteColor } from '../../styles/palette'
 import { spacing } from '../../styles/spacing'
+import { Variant } from '../../types/Variant'
 import { ButtonProps } from './Button.types'
 
 type Styles = ReturnType<typeof css>
 
 const buttonStyles = (props: ButtonProps): Styles => css`
   outline: 0;
-  line-height: 1.75;
   font-weight: 700;
-  border-radius: 0.25rem;
-  background: none;
   position: relative;
   cursor: pointer;
-  font-size: 0.875rem;
-  border: 1px solid transparent;
-
-  &:before,
-  &:after {
-    transition: all 0.3s ease-in-out;
-    position: absolute;
-    top: 0;
-    content: '';
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    border-radius: 0.25rem;
-  }
-
-  &:not([disabled]),
-  &:not([aria-disabled='true']) {
-    &:hover:before {
-      opacity: 0.8;
-    }
-
-    // any idea how to indicate active state?
-    &:active,
-    &[data-active='true'] {
-    }
-  }
+  line-height: 0;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
 
   ${props.color === 'default' && defaultStyles(props)}
   ${props.color === 'primary' && primaryStyles(props)}
@@ -53,164 +27,142 @@ const buttonStyles = (props: ButtonProps): Styles => css`
   ${props.size === 'l' && largeSize()}
 `
 
-export const StyledButton = styled(Button)<ButtonProps>`
+export const Button = styled(ReakitButton)<ButtonProps>`
   ${buttonStyles}
 `
 
-export const StyledButtonLink = styled.a<ButtonProps>`
+export const ButtonLink = styled.a<ButtonProps>`
   ${buttonStyles}
 `
 
-const defaultStyles = (props: ButtonProps): Styles => css`
-  color: ${palette.mono900};
+const defaultStyles = (props: ButtonProps): Styles =>
+  getVariantStyles(props, 'mono400', {
+    outlined: {
+      color: color('mono900'),
+      border: color('mono600', 0.7),
+      ripple: color('mono900', 0.2),
+      background: 'transparent',
+      hover: {
+        background: color('mono400', 0.5)
+      }
+    },
+    contained: {
+      color: color('mono900'),
+      ripple: color('mono900', 0.2),
+      background: color('mono400'),
+      hover: {
+        background: color('mono500')
+      }
+    },
+    ghost: {
+      color: color('mono900'),
+      ripple: color('mono900', 0.2),
+      background: 'transparent',
+      border: 'transparent',
+      hover: {
+        background: color('mono400', 0.5)
+      }
+    }
+  })
 
-  .ripple {
-    background-color: ${palette.mono600} !important;
+const primaryStyles = (props: ButtonProps): Styles =>
+  getVariantStyles(props, 'primary', {
+    outlined: {
+      background: 'transparent',
+      hover: {
+        background: color('primary', 0.1)
+      }
+    },
+    contained: {
+      color: color('mono100'),
+      ripple: color('mono100', 0.6),
+      hover: {
+        background: color('primary', 0.8)
+      }
+    },
+    ghost: {
+      background: 'transparent',
+      border: 'transparent',
+      hover: {
+        background: color('primary', 0.1)
+      }
+    }
+  })
+
+const secondaryStyles = (props: ButtonProps): Styles =>
+  getVariantStyles(props, 'secondary', {
+    outlined: {
+      background: 'transparent',
+      hover: {
+        background: color('secondary', 0.1)
+      }
+    },
+    contained: {
+      color: color('mono100'),
+      ripple: color('mono100', 0.5),
+      hover: {
+        background: color('secondary', 0.8)
+      }
+    },
+    ghost: {
+      background: 'transparent',
+      border: 'transparent',
+      hover: {
+        background: color('secondary', 0.1)
+      }
+    }
+  })
+
+type VariantStyleOptions = {
+  background?: string
+  border?: string
+  color?: string
+  hover?: {
+    background?: string
+    color?: string
   }
+  ripple?: string
+}
 
-  &:before {
-    background: ${palette.mono400};
-  }
+type Config = Record<Variant, VariantStyleOptions>
 
-  ${props.variant === 'contained' &&
-  `
-    &:before {
-      opacity: 1;
-    }
-    
-    &:not([aria-disabled='true']) {
-      &:hover:before {
-        background: ${palette.mono500};
-      }
-    }
-  `}
-
-  ${props.variant === 'outlined' &&
-  `
-    border: 1px solid ${palette.mono900};
-   
-    &:before {
-      opacity: 0;
-    }
-    
-    &:not([aria-disabled='true']) {
-      &:hover:before {
-        opacity: 0.6;
-      }
-    }
-  `}
-          
-  ${props.variant === 'ghost' &&
-  `
-    &:before {
-      background: none;
-      opacity: 0.1;
-    }
-    
-    &:not([aria-disabled='true']) {
-      &:hover:before {
-        background: ${palette.mono500};
-        opacity: 0.1;
-      }
-    }
-  `}
-`
-
-const primaryStyles = (props: ButtonProps): Styles => css`
-  color: ${palette.primary};
-
-  &:before {
-    background: ${palette.primary};
-  }
-
-  ${props.variant === 'contained' &&
-  `
-    color: ${palette.mono100};
-    
-    .ripple {
-      background-color: ${palette.mono100} !important;
-    }
-  `}
-
-  ${props.variant === 'outlined' &&
-  `
-     border: 1px solid ${palette.primary};
-
-    &:before {
-      opacity: 0;
-    }
-    
-    &:not([aria-disabled='true']) {
-      &:hover:before {
-        opacity: 0.1;
-      }
-    }
-  `}
-  
-  ${props.variant === 'ghost' &&
-  `
-    &:before {
-      opacity: 0;
-    }
-    
-    &:not([aria-disabled='true']) {
-      &:hover:before {
-        opacity: 0.1;
-      }
-    }
-  `}
-`
-const secondaryStyles = (props: ButtonProps): Styles => css`
-  color: ${palette.secondary};
-
-  &:before {
-    background: ${palette.secondary};
-  }
-
+const getVariantStyles = (props: ButtonProps, colorName: PaletteColor, config: Config): Styles => css`
+  // TODO styling for focused state
   &:focus {
     border: 1px solid rgba(0, 0, 0, 0.5);
   }
 
-  .ripple {
-    background-color: ${palette.secondary} !important;
+  &:not([disabled]),
+  &:not([aria-disabled='true']) {
+    // TODO styling for active state
+    &:active,
+    &[data-active='true'] {
+    }
   }
 
-  ${props.variant === 'contained' &&
-  `
-    color: ${palette.mono100};
-    
-    .ripple {
-      background-color: ${palette.mono100} !important;
-    }
-  `}
-
-  ${props.variant === 'outlined' &&
-  `
-     border: 1px solid ${palette.secondary};
-
-    &:before {
-      opacity: 0;
-    }
-    
-    &:not([aria-disabled='true']) {
-      &:hover:before {
-        opacity: 0.1;
-      }
-    }
-  `}
-  
-  ${props.variant === 'ghost' &&
-  `
-    &:before {
-      opacity: 0;
-    }
-    
-    &:not([aria-disabled='true']) {
-      &:hover:before {
-        opacity: 0.1;
-      }
-    }
-  `}
+  ${Object.entries(config).reduce(
+    (variantStyles, [variant, option]) =>
+      props.variant === variant
+        ? `
+          border: 1px solid  ${option.border ?? color(colorName)};
+          color: ${option.color ?? color(colorName)};
+          
+          background: ${option.background ?? color(colorName)};
+      
+          .ripple {
+            background-color: ${option.ripple ?? color(colorName, 0.3)} !important;
+          }
+      
+          &:not([aria-disabled='true']) {
+            &:hover {
+              background: ${option.hover?.background ?? option.background ?? color(colorName)};
+              color: ${option.hover?.color ?? option.color ?? color(colorName)};
+            }
+          }
+         `
+        : variantStyles,
+    ``
+  )}
 `
 
 const disabledStyles = (props: ButtonProps): Styles => css`
@@ -220,37 +172,33 @@ const disabledStyles = (props: ButtonProps): Styles => css`
     cursor: not-allowed;
     pointer-events: auto !important;
     border: 1px solid transparent;
-    color: ${palette.mono600};
-
-    &:before {
-      background: ${palette.mono500};
-      opacity: 1;
-    }
+    color: ${color('mono600')};
+    background: ${color('mono500')};
   }
 
   ${props.variant === 'ghost' &&
   `
     &[disabled],
     &[aria-disabled='true'] {
-  
-      &:before {
-        opacity: 0;
-      }
+      background: transparent;
     }
   `}
 `
 
 const smallSize = (): Styles => css`
-  padding: ${spacing(1, 2)};
-  font-size: 0.815rem;
+  padding: ${spacing(3.25, 3)};
+  font-size: ${spacing(3.25)};
+  border-radius: ${spacing(3.25)};
 `
 
 const mediumSize = (): Styles => css`
-  padding: ${spacing(1.5, 4)};
-  font-size: 0.875rem;
+  padding: ${spacing(3.5, 4)};
+  font-size: ${spacing(3.5)};
+  border-radius: ${spacing(3.5)};
 `
 
 const largeSize = (): Styles => css`
-  padding: ${spacing(2, 5)};
-  font-size: 0.9375rem;
+  padding: ${spacing(3.75, 6)};
+  font-size: ${spacing(3.75)};
+  border-radius: ${spacing(3.75)};
 `

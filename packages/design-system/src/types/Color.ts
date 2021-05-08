@@ -1,1 +1,3 @@
-export type Color = 'default' | 'primary' | 'secondary'
+import { PaletteColor } from '../styles/palette'
+
+export type Color = Extract<PaletteColor, 'primary' | 'secondary' | 'tertiary'> | 'default'

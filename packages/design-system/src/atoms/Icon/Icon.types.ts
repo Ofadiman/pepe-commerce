@@ -1,7 +1,7 @@
 import { ComponentType } from 'react'
 
 // all possible icon names
-type IconName = 'basket'
+type IconName = 'basket' | 'eye' | 'eye-crossed'
 
 export type Props = {
   /**

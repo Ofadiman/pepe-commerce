@@ -1,10 +1,10 @@
 import { MutableRefObject, RefObject, useEffect } from 'react'
 
-import { palette } from '../../styles/palette'
+import { color } from '../../styles/palette'
 
 const ANIMATION_LENGTH = 800
 const RIPPLE_SIZE = 300
-const RIPPLE_COLOR = palette.primary
+const RIPPLE_COLOR = color('primary')
 
 if (typeof document !== 'undefined') {
   const rippleAnimation = document.createElement('style')
@@ -12,7 +12,7 @@ if (typeof document !== 'undefined') {
   rippleAnimation.innerHTML = `
     @keyframes use-ripple-animation {
       from {
-        opacity: 0.15;
+        opacity: 0.5;
         transform: scale(0);
       }
       to {

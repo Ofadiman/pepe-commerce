@@ -2,7 +2,7 @@ import { FC, forwardRef, useRef } from 'react'
 
 import { mergeRefs } from '../../utils/helpers/mergeRefs'
 import { useRipple } from '../../utils/hooks/useRipple'
-import { StyledIconButton } from './IconButton.styles'
+import * as Styled from './IconButton.styles'
 import { BaseProps, IconButtonProps } from './IconButton.types'
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>((props, ref) => {
@@ -14,9 +14,9 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>((props,
   })
 
   return (
-    <StyledIconButton ref={mergeRefs([buttonRef, ref])} {...args}>
+    <Styled.IconButton ref={mergeRefs([buttonRef, ref])} {...args}>
       {children}
-    </StyledIconButton>
+    </Styled.IconButton>
   )
 })
 
