@@ -15,8 +15,8 @@ export const typography = {
     s3: '0.875rem',
     s4: '1rem',
     s5: '1.125rem',
-    s6: '1.5rem',
-    s7: '1.75rem',
+    s6: '1.25rem',
+    s7: '1.5rem',
     s8: '2rem',
     s9: '2.5rem',
     s10: '3rem'
