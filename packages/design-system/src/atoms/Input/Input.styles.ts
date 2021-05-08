@@ -13,9 +13,7 @@ export const Input = styled(ReakitInput)<InputProps>`
   width: 100%;
   display: block;
   color: inherit;
-  padding: ${spacing(2, 0)};
   line-height: 20px;
-  padding-left: ${spacing(1)};
   padding: ${(props) => {
     switch (props.adornment) {
       case 'left':
@@ -53,16 +51,12 @@ export const Label = styled.label<InputLabelProps>`
   `}
 `
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
   height: min-content;
   position: relative;
   color: inherit;
   width: auto;
   padding: ${spacing(6, 0)};
-
-  // &:hover {
-  //  background-color: ${color('mono100')}
-  //}
 }
 `
 

@@ -1,0 +1,42 @@
+import { Meta, Canvas, Story, Props } from "@storybook/addon-docs/blocks";
+import { Checkbox } from "./Checkbox";
+
+<Meta
+  title="Atoms/Checkbox"
+  component={Checkbox}
+  parameters={{
+    controls: {
+      sort: 'requiredFirst'
+    }
+  }}
+/>
+
+## Color
+<Story name="Color">
+  <Checkbox label={'some random text'} initiallyChecked onCheck={() => {}} />
+  <Checkbox label={'some random text'} initiallyChecked onCheck={() => {}} color="primary" />
+  <Checkbox label={'some random text'} initiallyChecked onCheck={() => {}} color="secondary" />
+</Story>
+
+## Long text
+<Story name="Long text">
+  <div style={{width: '700px'}}>
+    <Checkbox label={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'} initiallyChecked onCheck={() => {}} color="primary" />
+  </div>
+</Story>
+
+Experiment with this story with the Controls addon in the Canvas tab.
+
+export const Template = (args) => <Checkbox {...args} />
+
+<Props of={Checkbox} />
+
+## Playground
+
+<Canvas>
+  <Story
+    name="Playground"
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
