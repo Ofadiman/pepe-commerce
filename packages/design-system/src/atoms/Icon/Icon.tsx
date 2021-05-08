@@ -1,6 +1,6 @@
 import { VFC } from 'react'
 
-import { StyledIcon } from './Icon.styles'
+import * as Styled from './Icon.styles'
 import { Props } from './Icon.types'
 import { icons } from './icons'
 
@@ -8,7 +8,7 @@ export const Icon: VFC<Props> = ({ name, size, color, iconId = '', ...args }) =>
   const { title, paths: IconPaths, viewBox } = icons[name]
 
   return (
-    <StyledIcon
+    <Styled.Icon
       aria-labelledby={`${name}-icon-${iconId}`}
       fill={'none'}
       height={size}
@@ -19,11 +19,11 @@ export const Icon: VFC<Props> = ({ name, size, color, iconId = '', ...args }) =>
     >
       <title id={`${name}-icon-${iconId}`}>{title}</title>
       <IconPaths color={color} />
-    </StyledIcon>
+    </Styled.Icon>
   )
 }
 
 Icon.defaultProps = {
   color: 'currentColor',
-  size: '1rem'
+  size: '1em'
 }

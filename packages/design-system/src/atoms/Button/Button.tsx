@@ -2,21 +2,21 @@ import { FC, forwardRef, useRef } from 'react'
 
 import { mergeRefs } from '../../utils/helpers/mergeRefs'
 import { useRipple } from '../../utils/hooks/useRipple'
-import { StyledButton } from './Button.styles'
+import * as Styled from './Button.styles'
 import { BaseProps, ButtonProps } from './Button.types'
 
-export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { children, isRippleDisabled, ...args } = props
-  const buttonRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   useRipple(buttonRef, {
     disabled: isRippleDisabled
   })
 
   return (
-    <StyledButton ref={mergeRefs([buttonRef, ref])} {...args}>
+    <Styled.Button ref={mergeRefs([buttonRef, ref])} {...args}>
       {children}
-    </StyledButton>
+    </Styled.Button>
   )
 })
 
