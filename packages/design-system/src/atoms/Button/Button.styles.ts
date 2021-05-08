@@ -13,8 +13,6 @@ const buttonStyles = (props: ButtonProps): Styles => css`
   font-weight: 700;
   position: relative;
   cursor: pointer;
-  border: 1px solid transparent;
-  z-index: 1;
   line-height: 0;
   transition: all 0.3s ease-in-out;
   user-select: none;

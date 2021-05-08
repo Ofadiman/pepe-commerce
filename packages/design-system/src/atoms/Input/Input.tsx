@@ -40,7 +40,7 @@ export const Input: FC<Props> = ({
   }
 
   return (
-    <Styled.Container>
+    <Styled.Wrapper>
       <Styled.Label htmlFor={labelText} isActive={isFocused || Boolean(value)} isHidden={hiddenLabel}>
         {labelText}
       </Styled.Label>
@@ -75,7 +75,7 @@ export const Input: FC<Props> = ({
         )}
       </Styled.InputWrapper>
 
-      <StatusMessage message={validationError} show={!isValid && isTouched} size={'s'} status={'error'} />
-    </Styled.Container>
+      <StatusMessage isVisible={!isValid && isTouched} message={validationError} size={'s'} status={'error'} />
+    </Styled.Wrapper>
   )
 }
