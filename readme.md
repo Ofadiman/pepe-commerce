@@ -12,7 +12,7 @@ installed `yarn -v`.
 
 ```shell
 # Clone the repository.
-git clone git@github.com:Ofadiman/a36d85899d2b473c5147128a71d611f3.git
+git clone git@github.com:Ofadiman/pepe-commerce.git
 
 # Install dependencies in root directory as well as in all of the packages.
 yarn setup
@@ -33,3 +33,21 @@ We are using conventional commits to keep our code clean and organised. you can 
 - `revert` - Revert unwanted changes.
 - `style` - Changes that do not affect the meaning of the code (white-space, formatting, etc).
 - `test` - Adding missing tests or correcting existing tests.
+
+### Issue workflow
+
+Our workflow utilizes GitHub projects and GitHub issues. A typical steps taken with an issue look like that:
+
+1. Create an issue and add appropriate labels.
+2. Assign an issue to yourself and start working on it.
+3. Open a pull request and request a review from colleagues.
+4. Link issues that are related to opened pull request.
+5. Merge code to the `main` branch.
+
+Issues are managed with some automation provided by `github-project-automation-plus` GitHub action. We are currently handling the following events:
+
+1. `issue_opened` - The issue is moved to the `Todo` column on project board.
+2. `issue_assigned` - The issue is moved to the `In progress` column on project board.
+3. `issue_closed` - The issue is moved to the `Done` column on project board.
+4. `pull_request_opened` - The pull request is moved to the `Code review` column on project board.
+5. `pull_request_closed` - The pull request is moved to the `Done` column on project board.
