@@ -39,3 +39,6 @@ pids
 .vercel
 .next/
 out/
+
+# Docker volumes
+data/
